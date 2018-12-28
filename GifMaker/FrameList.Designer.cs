@@ -1,11 +1,14 @@
-﻿namespace GifMaker
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace GifMaker
 {
     partial class FrameList
     {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary> 
         /// Clean up any resources being used.
@@ -31,12 +34,10 @@
             this.components = new System.ComponentModel.Container();
             this.holder = new System.Windows.Forms.ListView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.selectMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.swapWithSelectedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.displayExternallyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.displayExternallyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,7 +49,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.holder.AutoArrange = false;
-            this.holder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.holder.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.holder.ContextMenuStrip = this.contextMenuStrip1;
             this.holder.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.holder.HideSelection = false;
@@ -60,42 +61,34 @@
             this.holder.TabIndex = 0;
             this.holder.TileSize = new System.Drawing.Size(300, 300);
             this.holder.UseCompatibleStateImageBehavior = false;
+            this.holder.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.Holder_ItemDrag);
             this.holder.ItemMouseHover += new System.Windows.Forms.ListViewItemMouseHoverEventHandler(this.Holder_ItemMouseHover);
             this.holder.Click += new System.EventHandler(this.Holder_Click);
             this.holder.DragDrop += new System.Windows.Forms.DragEventHandler(this.Holder_DragDrop);
             this.holder.DragEnter += new System.Windows.Forms.DragEventHandler(this.Holder_DragEnter);
-            this.holder.DoubleClick += new System.EventHandler(this.Holder_DoubleClick);
+            this.holder.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Holder_KeyDown);
+            this.holder.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Holder_MouseUp);
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.selectMenuItem,
-            this.swapWithSelectedToolStripMenuItem,
             this.removeImageToolStripMenuItem,
             this.displayExternallyToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 114);
-            // 
-            // selectMenuItem
-            // 
-            this.selectMenuItem.Name = "selectMenuItem";
-            this.selectMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.selectMenuItem.Text = "Select";
-            this.selectMenuItem.Click += new System.EventHandler(this.SelectMenuItem_Click);
-            // 
-            // swapWithSelectedToolStripMenuItem
-            // 
-            this.swapWithSelectedToolStripMenuItem.Name = "swapWithSelectedToolStripMenuItem";
-            this.swapWithSelectedToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.swapWithSelectedToolStripMenuItem.Text = "Swap With Selected";
-            this.swapWithSelectedToolStripMenuItem.Click += new System.EventHandler(this.SwapWithSelectedToolStripMenuItem_Click);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(166, 48);
             // 
             // removeImageToolStripMenuItem
             // 
             this.removeImageToolStripMenuItem.Name = "removeImageToolStripMenuItem";
-            this.removeImageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.removeImageToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.removeImageToolStripMenuItem.Text = "Remove Frame";
             this.removeImageToolStripMenuItem.Click += new System.EventHandler(this.RemoveImageToolStripMenuItem_Click);
+            // 
+            // displayExternallyToolStripMenuItem
+            // 
+            this.displayExternallyToolStripMenuItem.Name = "displayExternallyToolStripMenuItem";
+            this.displayExternallyToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.displayExternallyToolStripMenuItem.Text = "Display Externally";
             // 
             // imageList
             // 
@@ -107,12 +100,6 @@
             // 
             this.timer1.Interval = 10000;
             this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
-            // 
-            // displayExternallyToolStripMenuItem
-            // 
-            this.displayExternallyToolStripMenuItem.Name = "displayExternallyToolStripMenuItem";
-            this.displayExternallyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.displayExternallyToolStripMenuItem.Text = "Display Externally";
             // 
             // FrameList
             // 
@@ -128,13 +115,11 @@
 
         #endregion
 
-        private System.Windows.Forms.ListView holder;
-        private System.Windows.Forms.ImageList imageList;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem selectMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem swapWithSelectedToolStripMenuItem;
-        private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.ToolStripMenuItem removeImageToolStripMenuItem;
-        public System.Windows.Forms.ToolStripMenuItem displayExternallyToolStripMenuItem;
+        private ListView holder;
+        private ImageList imageList;
+        private ContextMenuStrip contextMenuStrip1;
+        private Timer timer1;
+        private ToolStripMenuItem removeImageToolStripMenuItem;
+        public ToolStripMenuItem displayExternallyToolStripMenuItem;
     }
 }
