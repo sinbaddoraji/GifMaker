@@ -33,11 +33,11 @@ namespace GifMaker
         {
             this.components = new System.ComponentModel.Container();
             this.holder = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.removeImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.displayExternallyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,6 +50,8 @@ namespace GifMaker
             | System.Windows.Forms.AnchorStyles.Right)));
             this.holder.AutoArrange = false;
             this.holder.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.holder.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
             this.holder.ContextMenuStrip = this.contextMenuStrip1;
             this.holder.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.holder.HideSelection = false;
@@ -96,11 +98,6 @@ namespace GifMaker
             this.imageList.ImageSize = new System.Drawing.Size(50, 50);
             this.imageList.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // timer1
-            // 
-            this.timer1.Interval = 10000;
-            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
-            // 
             // FrameList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -118,8 +115,8 @@ namespace GifMaker
         private ListView holder;
         private ImageList imageList;
         private ContextMenuStrip contextMenuStrip1;
-        private Timer timer1;
         private ToolStripMenuItem removeImageToolStripMenuItem;
         public ToolStripMenuItem displayExternallyToolStripMenuItem;
+        private ColumnHeader columnHeader1;
     }
 }

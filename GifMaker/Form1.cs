@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
 using ImageMagick;
@@ -10,7 +12,7 @@ namespace GifMaker
     public partial class Form1 : Form
     {
         private PicturePreview _picturePreview;
-        private const string tempFile = "test.gif";
+        private const string TempFile = "test.gif";
         
         public Form1()
         {
@@ -24,7 +26,7 @@ namespace GifMaker
             _picturePreview = new PicturePreview();
             frameList1.FrameSelected = FrameSelected;
             frameList1.FrameDeselected = delegate{ panel1.Hide(); };
-            frameList1.displayExternallyToolStripMenuItem.Click += displayExternally_Click;
+            frameList1.displayExternallyToolStripMenuItem.Click += DisplayExternally_Click;
         }
 
         private void FrameSelected(Frame lastClickedItem)
@@ -33,7 +35,7 @@ namespace GifMaker
             {
                 _picturePreview.Image = lastClickedItem.RealImage;
                 panel1.Show();
-                frameDuration.Text = lastClickedItem.DisplayTimeInSeconds.ToString();
+                frameDuration.Text = lastClickedItem.DisplayTimeInSeconds.ToString(CultureInfo.CurrentCulture);
             }
             catch (Exception)
             {
@@ -43,35 +45,38 @@ namespace GifMaker
 
         private void DisplayExternally()
         {
-            if (frameList1.LastClickedItem == null)
+            if (frameList1.LastClickedItem != null)
             {
-                if(_picturePreview.Image == pictureBox1.Image && pictureBox1.Image != null)
+                _picturePreview.Image = frameList1.LastClickedItem.RealImage;
+
+                ShowPicturePreview:
+                try
                 {
                     _picturePreview.Show();
-                    pictureBox1.Image = _picturePreview.Image;
                 }
-
-                return;
+                catch
+                {
+                    RefreshPreviewForm();
+                    goto ShowPicturePreview;
+                }
             }
-            //Reset pictureBox image to make images play at the same time
-            _picturePreview.Image = frameList1.LastClickedItem.RealImage;
-
-            ShowPicturePreview:
-            try
+            else
             {
+                if (_picturePreview.Image != pictureBox1.Image || pictureBox1.Image == null) return;
                 _picturePreview.Show();
+
+                //Reset pictureBox image to make images play at the same time
+                pictureBox1.Image = _picturePreview.Image;
             }
-            catch 
-            {
-                RefreshPreviewForm(); goto ShowPicturePreview; 
-            }
+
+            
         }
 
         private void FrameDuration_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                frameList1.LastClickedItem.DisplayTime = int.Parse(frameDuration.Text) * 100;
+                frameList1.LastClickedItem.DisplayTime = double.Parse(frameDuration.Text) * 100;
             }
             catch
             {
@@ -81,39 +86,43 @@ namespace GifMaker
         private static void DeleteTempFiles()
         {
            Directory.Delete($@"{Directory.GetCurrentDirectory()}\temp", true);
-           //File.Delete(tempFile);
         }
 
-        private void CreateTempFiles(Frame[] frames)
+        private void CreateTempFiles(IReadOnlyList<Frame> frames)
         {
             if (!Directory.Exists("temp")) Directory.CreateDirectory("temp");
 
-            for (int i = 0; i < frames.Length; i++)
+            for (var i = 0; i < frames.Count; i++)
             {
-                Frame current = frames[i];
+                var current = frames[i];
 
-                int w = frameList1.AverageSize.Width;
-                int h = frameList1.AverageSize.Height;
-                Image currentImage = current.RealImage.GetThumbnailImage(w, h, null, IntPtr.Zero);
+                var w = frameList1.AverageSize.Width;
+                var h = frameList1.AverageSize.Height;
+                var currentImage = current.RealImage.GetThumbnailImage(w, h, null, IntPtr.Zero);
 
                 currentImage.Save($@"{Directory.GetCurrentDirectory()}\temp\{i}.png");
             }
         }
 
-        private static void CreateGIF(Frame[] frames)
+        private static void CreateGif(IReadOnlyList<Frame> frames)
         {
-            string[] rawFrames = Directory.GetFiles("temp");
-
-            using (MagickImageCollection collection = new MagickImageCollection())
+            var rawFrames = Directory.GetFiles("temp");
+            if(rawFrames.Length != frames.Count)
             {
-                for (int i = 0, count = rawFrames.Length; i < count; i++)
+                MessageBox.Show(@"There was a problem somewhere");
+                return;
+            }
+
+            using (var collection = new MagickImageCollection())
+            {
+                for (var i = 0; i < rawFrames.Length; i++)
                 {
                     collection.Add(rawFrames[i]);
                     collection[i].AnimationDelay = (int)frames[i].DisplayTime;
                 }
-
+                
                 // Optionally reduce colors
-                QuantizeSettings settings = new QuantizeSettings
+                var settings = new QuantizeSettings
                 {
                     Colors = 256
                 };
@@ -123,11 +132,11 @@ namespace GifMaker
                 collection.Optimize();
 
                 // Save gif
-                collection.Write(tempFile);
+                collection.Write(TempFile);
             }
         }
 
-        private void openGifToolStripMenuItem_Click(object sender, EventArgs e)
+        private void OpenGifToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frameList1.Clear();
             var o = new OpenFileDialog();
@@ -160,13 +169,13 @@ namespace GifMaker
             }
         }
 
-        private void addFrameToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AddFrameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-             if(o.ShowDialog() != DialogResult.OK) return;
+             if(openDialog.ShowDialog() != DialogResult.OK) return;
             
             try
             {
-                frameList1.AddFrame(o.FileNames);
+                frameList1.AddFrame(openDialog.FileNames);
             }
             catch (Exception ex)
             {
@@ -174,31 +183,61 @@ namespace GifMaker
             }
         }
 
-        private void playGifToolStripMenuItem_Click(object sender, EventArgs e)
+        private void PlayGifToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CreateTempFiles(frameList1.Frames);
-            CreateGIF(frameList1.Frames);
+            CreateGif(frameList1.Frames);
 
-            pictureBox1.Image = (Image)Image.FromFile(tempFile).Clone();
+            pictureBox1.Image = (Image)Image.FromFile(TempFile).Clone();
             _picturePreview.Image = pictureBox1.Image;
 
             DeleteTempFiles();
         }
 
-        private void displayExternally_Click(object sender, EventArgs e)
-        {
-            DisplayExternally();
-        }
+        private void DisplayExternally_Click(object sender, EventArgs e) => DisplayExternally();
 
-        private void saveGifToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SaveGifToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using(SaveFileDialog o = new SaveFileDialog(){ Filter = "GIF|*.gif"})
+            using(var o = new SaveFileDialog(){ Filter = @"GIF|*.gif"})
             {
                 if(o.ShowDialog() == DialogResult.OK)
-                {
                     pictureBox1.Image.Save(o.FileName,ImageFormat.Gif);
-                }
             }
+        }
+        private void AlterFrameDuration(double v,bool add)
+        {
+            if(!add) v *= -1;
+            double duration = double.Parse(frameDuration.Text) + v;
+            frameDuration.Text = duration.ToString();
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+           AlterFrameDuration(0.1,true);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            AlterFrameDuration(0.1,false);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AlterFrameDuration(0.5,true);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            AlterFrameDuration(0.5,false);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            AlterFrameDuration(1,true);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            AlterFrameDuration(1,false);
         }
     }
 }

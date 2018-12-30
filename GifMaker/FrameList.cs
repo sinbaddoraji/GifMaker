@@ -8,15 +8,11 @@ namespace GifMaker
 {
     public partial class FrameList : UserControl
     {
-        public FrameList()
-        {
-            InitializeComponent();
-        }
+        public FrameList() => InitializeComponent();
 
         #region All FrameList Variables
         public Frame LastClickedItem;
-        private Frame _selectedItem;
-        private Frame itemDragged;
+        private Frame _itemDragged;
 
         public Size AverageSize
         {
@@ -50,23 +46,9 @@ namespace GifMaker
 
         public void SetFrameDelay(int index,int delayValue)
         {
-           Frame f = (Frame)holder.Items[index];
+           var f = (Frame)holder.Items[index];
            f.DisplayTime = delayValue;
         }
-        
-
-        private void SwapWithSelectedFrame()
-        {
-           if (_selectedItem != null) goto StartSwapping;
-
-           MessageBox.Show(@"There is no selected item"); return;
-            
-           StartSwapping:
-           SwapFrames(_selectedItem,(Frame)holder.SelectedItems[0]);
-            _selectedItem = null;
-        }
-
-        private void SwapFrames(Frame a, Frame b) => Frame.SwapFrames(ref a, ref b);
 
         #endregion Added Functionality
 
@@ -142,11 +124,6 @@ namespace GifMaker
 
         private void RemoveImageToolStripMenuItem_Click(object sender, EventArgs e) => RemoveFrame((Frame)holder.SelectedItems[0]);
 
-        private void SwapWithSelectedToolStripMenuItem_Click(object sender, EventArgs e) => SwapWithSelectedFrame();
-        
-
-        
-
         private void Holder_DragEnter(object sender, DragEventArgs e) => e.Effect = DragDropEffects.Copy;
 
         private void Holder_ItemMouseHover(object sender, ListViewItemMouseHoverEventArgs e)
@@ -171,8 +148,8 @@ namespace GifMaker
             if(holder.SelectedItems.Count < 1) return;
             if(e.KeyCode == Keys.Delete)  RemoveFrame((Frame)holder.SelectedItems[0]);
 
-            int currentIndex = holder.Items.IndexOf(holder.SelectedItems[0]);
-            int nextIndex = currentIndex;
+            var currentIndex = holder.Items.IndexOf(holder.SelectedItems[0]);
+            var nextIndex = currentIndex;
 
             if(e.KeyCode == Keys.Left && currentIndex > 0)
                 nextIndex -= 1;
@@ -181,16 +158,15 @@ namespace GifMaker
 
             if(currentIndex == nextIndex)return;
 
-            Frame a = (Frame)holder.Items[currentIndex];
-            Frame b = (Frame)holder.Items[nextIndex];
+            var a = (Frame)holder.Items[currentIndex];
+            var b = (Frame)holder.Items[nextIndex];
             Frame.SwapFrames(ref a, ref b);
         }
 
         private void Holder_ItemDrag(object sender, ItemDragEventArgs e)
         {
            holder.HoverSelection = true;
-           var g = holder.CreateGraphics();
-           itemDragged = (Frame)e.Item;
+           _itemDragged = (Frame)e.Item;
         }
 
         private void Holder_DragDrop(object sender, DragEventArgs e)
@@ -201,20 +177,12 @@ namespace GifMaker
 
         private void Holder_MouseUp(object sender, MouseEventArgs e)
         {
-            if (holder.HoverSelection)
-            {
-                Frame a = itemDragged;
-                Frame b = (Frame)holder.SelectedItems[0];
-                Frame.SwapFrames(ref a, ref b);
+            if (!holder.HoverSelection) return;
+            var a = _itemDragged;
+            var b = (Frame)holder.SelectedItems[0];
+            Frame.SwapFrames(ref a, ref b);
 
-                holder.HoverSelection = false;
-            }
-        }
-
-        private void Timer1_Tick(object sender, EventArgs e)
-        {
-            _selectedItem = null;
-            timer1.Stop();
+            holder.HoverSelection = false;
         }
 
         #endregion Events
@@ -225,9 +193,5 @@ namespace GifMaker
             public FrameSelect FrameDeselected = delegate{ };
 
         #endregion
-        
-        
-
-        
     }
 }
