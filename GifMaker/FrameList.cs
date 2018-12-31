@@ -183,6 +183,7 @@ namespace GifMaker
             Frame.SwapFrames(ref a, ref b);
 
             holder.HoverSelection = false;
+            FrameSelected(null);
         }
 
         #endregion Events

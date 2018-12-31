@@ -32,6 +32,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>GIFmaker.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Magick.NET-Q16-AnyCPU, Version=7.9.2.0, Culture=neutral, PublicKeyToken=2004825badfa91ec, processorArchitecture=MSIL">
       <HintPath>..\packages\Magick.NET-Q16-AnyCPU.7.9.2\lib\net40\Magick.NET-Q16-AnyCPU.dll</HintPath>
@@ -123,6 +129,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\minus2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GIFmaker.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

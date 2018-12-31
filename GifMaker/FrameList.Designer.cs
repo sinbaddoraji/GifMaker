@@ -36,7 +36,6 @@ namespace GifMaker
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.removeImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.displayExternallyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -74,10 +73,9 @@ namespace GifMaker
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.removeImageToolStripMenuItem,
-            this.displayExternallyToolStripMenuItem});
+            this.removeImageToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(166, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
             // 
             // removeImageToolStripMenuItem
             // 
@@ -85,12 +83,6 @@ namespace GifMaker
             this.removeImageToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.removeImageToolStripMenuItem.Text = "Remove Frame";
             this.removeImageToolStripMenuItem.Click += new System.EventHandler(this.RemoveImageToolStripMenuItem_Click);
-            // 
-            // displayExternallyToolStripMenuItem
-            // 
-            this.displayExternallyToolStripMenuItem.Name = "displayExternallyToolStripMenuItem";
-            this.displayExternallyToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
-            this.displayExternallyToolStripMenuItem.Text = "Display Externally";
             // 
             // imageList
             // 
@@ -116,7 +108,6 @@ namespace GifMaker
         private ImageList imageList;
         private ContextMenuStrip contextMenuStrip1;
         private ToolStripMenuItem removeImageToolStripMenuItem;
-        public ToolStripMenuItem displayExternallyToolStripMenuItem;
         private ColumnHeader columnHeader1;
     }
 }

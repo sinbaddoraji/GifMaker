@@ -34,9 +34,15 @@ namespace GifMaker
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.openDialog = new System.Windows.Forms.OpenFileDialog();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.frameDuration = new System.Windows.Forms.TextBox();
@@ -51,20 +57,13 @@ namespace GifMaker
             this.frameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addFrameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.frameList1 = new GifMaker.FrameList();
             this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.cutToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.copyToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.frameList1 = new GifMaker.FrameList();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -95,6 +94,43 @@ namespace GifMaker
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(714, 31);
             this.panel1.TabIndex = 5;
+            this.panel1.Visible = false;
+            // 
+            // button6
+            // 
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
+            this.button6.Location = new System.Drawing.Point(636, 3);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(28, 23);
+            this.button6.TabIndex = 11;
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.Button6_Click);
+            // 
+            // button5
+            // 
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
+            this.button5.Location = new System.Drawing.Point(492, 3);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(28, 23);
+            this.button5.TabIndex = 10;
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.Button5_Click);
+            // 
+            // button4
+            // 
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
+            this.button4.Location = new System.Drawing.Point(328, 3);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(28, 23);
+            this.button4.TabIndex = 9;
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.Button4_Click);
             // 
             // label5
             // 
@@ -105,6 +141,18 @@ namespace GifMaker
             this.label5.TabIndex = 8;
             this.label5.Text = "1 seconds";
             // 
+            // button3
+            // 
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Image = global::GifMaker.Properties.Resources.Add;
+            this.button3.Location = new System.Drawing.Point(546, 3);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(28, 23);
+            this.button3.TabIndex = 7;
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.Button3_Click);
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -114,6 +162,18 @@ namespace GifMaker
             this.label4.TabIndex = 6;
             this.label4.Text = "0.5 seconds";
             // 
+            // button2
+            // 
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Image = global::GifMaker.Properties.Resources.Add;
+            this.button2.Location = new System.Drawing.Point(389, 3);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(28, 23);
+            this.button2.TabIndex = 5;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -122,6 +182,18 @@ namespace GifMaker
             this.label3.Size = new System.Drawing.Size(65, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "0.1 seconds";
+            // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Image = global::GifMaker.Properties.Resources.Add;
+            this.button1.Location = new System.Drawing.Point(223, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(28, 23);
+            this.button1.TabIndex = 3;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // label2
             // 
@@ -177,22 +249,23 @@ namespace GifMaker
             // openGifToolStripMenuItem
             // 
             this.openGifToolStripMenuItem.Name = "openGifToolStripMenuItem";
-            this.openGifToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.openGifToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openGifToolStripMenuItem.Text = "Open Gif";
             this.openGifToolStripMenuItem.Click += new System.EventHandler(this.OpenGifToolStripMenuItem_Click);
             // 
             // saveGifToolStripMenuItem
             // 
             this.saveGifToolStripMenuItem.Name = "saveGifToolStripMenuItem";
-            this.saveGifToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.saveGifToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveGifToolStripMenuItem.Text = "Save Gif";
             this.saveGifToolStripMenuItem.Click += new System.EventHandler(this.SaveGifToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // imageToolStripMenuItem
             // 
@@ -227,7 +300,7 @@ namespace GifMaker
             // addFrameToolStripMenuItem
             // 
             this.addFrameToolStripMenuItem.Name = "addFrameToolStripMenuItem";
-            this.addFrameToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addFrameToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.addFrameToolStripMenuItem.Text = "Add Frame";
             this.addFrameToolStripMenuItem.Click += new System.EventHandler(this.AddFrameToolStripMenuItem_Click);
             // 
@@ -240,26 +313,12 @@ namespace GifMaker
             this.openToolStripButton,
             this.saveToolStripButton,
             this.toolStripSeparator,
-            this.cutToolStripButton,
-            this.copyToolStripButton});
-            this.toolStrip1.Location = new System.Drawing.Point(579, 0);
+            this.cutToolStripButton});
+            this.toolStrip1.Location = new System.Drawing.Point(606, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(133, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(110, 25);
             this.toolStrip1.TabIndex = 8;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripSeparator
-            // 
-            this.toolStripSeparator.Name = "toolStripSeparator";
-            this.toolStripSeparator.Size = new System.Drawing.Size(6, 25);
-            // 
-            // frameList1
-            // 
-            this.frameList1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.frameList1.Location = new System.Drawing.Point(0, 350);
-            this.frameList1.Name = "frameList1";
-            this.frameList1.Size = new System.Drawing.Size(714, 106);
-            this.frameList1.TabIndex = 0;
             // 
             // newToolStripButton
             // 
@@ -291,6 +350,11 @@ namespace GifMaker
             this.saveToolStripButton.Text = "&Save";
             this.saveToolStripButton.Click += new System.EventHandler(this.SaveGifToolStripMenuItem_Click);
             // 
+            // toolStripSeparator
+            // 
+            this.toolStripSeparator.Name = "toolStripSeparator";
+            this.toolStripSeparator.Size = new System.Drawing.Size(6, 25);
+            // 
             // cutToolStripButton
             // 
             this.cutToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -299,87 +363,7 @@ namespace GifMaker
             this.cutToolStripButton.Name = "cutToolStripButton";
             this.cutToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.cutToolStripButton.Text = "C&ut";
-            // 
-            // copyToolStripButton
-            // 
-            this.copyToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.copyToolStripButton.Image = global::GifMaker.Properties.Resources.Play;
-            this.copyToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.copyToolStripButton.Name = "copyToolStripButton";
-            this.copyToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.copyToolStripButton.Text = "&Copy";
-            // 
-            // button6
-            // 
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
-            this.button6.Location = new System.Drawing.Point(636, 3);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(28, 23);
-            this.button6.TabIndex = 11;
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // button5
-            // 
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
-            this.button5.Location = new System.Drawing.Point(492, 3);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(28, 23);
-            this.button5.TabIndex = 10;
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // button4
-            // 
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.Location = new System.Drawing.Point(328, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(28, 23);
-            this.button4.TabIndex = 9;
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button3
-            // 
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Image = global::GifMaker.Properties.Resources.Add;
-            this.button3.Location = new System.Drawing.Point(546, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(28, 23);
-            this.button3.TabIndex = 7;
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button2
-            // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Image = global::GifMaker.Properties.Resources.Add;
-            this.button2.Location = new System.Drawing.Point(389, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(28, 23);
-            this.button2.TabIndex = 5;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button1
-            // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = global::GifMaker.Properties.Resources.Add;
-            this.button1.Location = new System.Drawing.Point(223, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(28, 23);
-            this.button1.TabIndex = 3;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.cutToolStripButton.Click += new System.EventHandler(this.DisplayExternally_Click);
             // 
             // pictureBox1
             // 
@@ -392,6 +376,14 @@ namespace GifMaker
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
+            // frameList1
+            // 
+            this.frameList1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.frameList1.Location = new System.Drawing.Point(0, 350);
+            this.frameList1.Name = "frameList1";
+            this.frameList1.Size = new System.Drawing.Size(714, 106);
+            this.frameList1.TabIndex = 0;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -403,9 +395,14 @@ namespace GifMaker
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.frameList1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(730, 496);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(730, 496);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Gif Maker";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -443,7 +440,6 @@ namespace GifMaker
         private ToolStripButton saveToolStripButton;
         private ToolStripSeparator toolStripSeparator;
         private ToolStripButton cutToolStripButton;
-        private ToolStripButton copyToolStripButton;
         private Label label5;
         private Button button3;
         private Label label4;

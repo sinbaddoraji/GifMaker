@@ -5,12 +5,15 @@ namespace GifMaker
 {
     public class Frame : ListViewItem
     {
-        public Image RealImage;
         public string Path;
+
+        public Image RealImage;
+
         public double DisplayTime  = 50; // 1/100 of a second
-        public double DisplayTimeInSeconds => DisplayTime / 100;
 
         public Frame(Image img) => RealImage = img;
+
+        public double DisplayTimeInSeconds => DisplayTime / 100;
 
         public static void SwapFrames(ref Frame a,ref Frame b)
         {
@@ -35,7 +38,5 @@ namespace GifMaker
             b.DisplayTime = a.DisplayTime;
             a.DisplayTime = bDisplayTime;
         }
-
-        
     }
 }
