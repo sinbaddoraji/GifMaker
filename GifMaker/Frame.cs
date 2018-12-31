@@ -7,7 +7,7 @@ namespace GifMaker
     {
         public Image RealImage;
         public string Path;
-        public double DisplayTime  = 5000; // 1/100 of a second
+        public double DisplayTime  = 50; // 1/100 of a second
         public double DisplayTimeInSeconds => DisplayTime / 100;
 
         public Frame(Image img) => RealImage = img;
