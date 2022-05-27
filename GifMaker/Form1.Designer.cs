@@ -94,7 +94,6 @@ namespace GifMaker
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(714, 31);
             this.panel1.TabIndex = 5;
-            this.panel1.Visible = false;
             // 
             // button6
             // 
@@ -249,21 +248,21 @@ namespace GifMaker
             // openGifToolStripMenuItem
             // 
             this.openGifToolStripMenuItem.Name = "openGifToolStripMenuItem";
-            this.openGifToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openGifToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.openGifToolStripMenuItem.Text = "Open Gif";
             this.openGifToolStripMenuItem.Click += new System.EventHandler(this.OpenGifToolStripMenuItem_Click);
             // 
             // saveGifToolStripMenuItem
             // 
             this.saveGifToolStripMenuItem.Name = "saveGifToolStripMenuItem";
-            this.saveGifToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveGifToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.saveGifToolStripMenuItem.Text = "Save Gif";
             this.saveGifToolStripMenuItem.Click += new System.EventHandler(this.SaveGifToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -279,14 +278,14 @@ namespace GifMaker
             // playGifToolStripMenuItem
             // 
             this.playGifToolStripMenuItem.Name = "playGifToolStripMenuItem";
-            this.playGifToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.playGifToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
             this.playGifToolStripMenuItem.Text = "Play Gif";
             this.playGifToolStripMenuItem.Click += new System.EventHandler(this.PlayGifToolStripMenuItem_Click);
             // 
             // displayImageExternallyToolStripMenuItem
             // 
             this.displayImageExternallyToolStripMenuItem.Name = "displayImageExternallyToolStripMenuItem";
-            this.displayImageExternallyToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.displayImageExternallyToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
             this.displayImageExternallyToolStripMenuItem.Text = "Display Image Externally";
             // 
             // frameToolStripMenuItem
